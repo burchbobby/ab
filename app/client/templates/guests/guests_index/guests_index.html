@@ -1,0 +1,65 @@
+<template name="GuestsIndex">
+	<form class="add-guest">
+		<h2>Add a Guest</h2>
+		<div class="row">
+			<div class="six columns">
+				<label for="first_name">
+					First Name
+					<input type="text" name="first_name" class="u-full-width"/>
+				</label>
+			</div>
+			<div class="six columns">
+				<label for="last_name">
+					Last Name
+					<input type="text" name="last_name" class="u-full-width"/>
+				</label>
+			</div>
+		</div>
+		<div class="row">
+			<div class="eight columns">
+				<label for="addr">
+					Address
+					<input type="text" name="addr" class="u-full-width"/>
+				</label>
+			</div>
+			<div class="four columns">
+				<label for="diet">
+					Diet
+					<select name="diet" class="u-full-width">
+						<option value="omni">Omnivore</option>
+						<option value="herb">Herbivore</option>
+					</select>
+				</label>
+			</div>
+		</div>
+		<div class="row">
+			<div class="three columns">
+				<label for="rsvp">
+					<input type="checkbox" name="rsvp"/>
+					Add RSVP?
+				</label>
+			</div>
+			<div class="nine columns">
+				<input type="submit" value="Add Guest" class="right"/>
+			</div>
+		</div>
+	</form>
+
+	<table class="ui table">
+		<thead>
+			<tr>
+				<th class="first">First Name</th>
+				<th class="last">Last Name</th>
+				<th class="address">Address</th>
+				<th class="diet">Diet</th>
+				<th class="rsvp">RSVP</th>
+				<th class="edit">Edit</th>
+			</tr>
+		</thead>
+		<tbody>
+		{{#each guests}}
+			{{> Guest}}
+		{{/each}}
+		</tbody>
+	</table>
+</template>

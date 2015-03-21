@@ -1,0 +1,14 @@
+<template name="GuestsShow">
+	<tr>
+		<td>{{first}}</td>
+		<td>{{last}}</td>
+		<td>{{addr}}</td>
+		<td>{{diet}}</td>
+		{{# if hasRsvp}}
+			<td><i class="icon check"></i></td>
+		{{else}}
+			<td><i class="icon close"></i></td>
+		{{/if}}
+		<td><button class="ui mini button negative remove">Remove</button></td>
+	</tr>
+</template>

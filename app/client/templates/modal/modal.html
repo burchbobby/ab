@@ -1,0 +1,9 @@
+<template name="Modal"> 
+  {{#if getActiveModal}}
+	<div id="modal">
+		<div id="modal-{{getActiveModal}}" class="ui small modal">
+			{{> Template.dynamic template=getActiveModal}}
+		</div>
+	</div>
+  {{/if}}
+</template>

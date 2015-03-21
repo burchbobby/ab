@@ -1,0 +1,11 @@
+$theme--wedding-primary: #000;
+
+.theme {
+	&.wedding {
+		&.primary {
+			.grid {
+				background: $theme--weding-primary;
+			}
+		}
+	}
+}

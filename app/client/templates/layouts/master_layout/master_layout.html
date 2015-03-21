@@ -1,0 +1,24 @@
+<template name="MasterLayout">
+	<header>
+		<div class="ui page grid">
+			{{> Header}}
+		</div>
+	</header>
+
+	{{#if isInRole 'admin'}}
+		{{> AdminNav}}
+	{{else}}
+		{{> Nav}}
+	{{/if}}
+		
+	<section id="main" class="ui page grid">
+		{{> yield}}
+	</section>
+
+	<footer>
+		{{> Footer}}
+	</footer>
+
+	{{> Modal}}
+	{{> notifications}}
+</template>

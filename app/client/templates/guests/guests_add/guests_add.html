@@ -1,0 +1,51 @@
+<template name="GuestsAdd">
+	<h2>Add a Guest</h2>
+	<form id="guest-add" class="ui small form">
+		<div class="two fields">
+			<div class="field">
+				<div class="two fields">
+					<div class="field">
+						<label for="first">First Name</label>
+						<input type="text" name="first" placeholder="First Name"/>
+					</div>
+					<div class="field">
+						<label for="last">Last Name</label>
+						<input type="text" name="last" placeholder="Last Name"/>
+					</div>
+				</div>
+			</div>
+			<div class="field">
+				<label for="addr">Address</label>
+				<input type="text" name="addr" class="u-full-width"/>
+			</div>
+		</div>
+		<div class="field">
+			<label>Diet</label>
+			<div class="ui selection dropdown">
+				<input name="diet" type="hidden">
+				<div class="default text">Herbivore</div>
+				<i class="dropdown icon"></i>
+				<div class="menu">
+					<div class="item" data-value="omni">Omnivore</div>
+					<div class="item" data-value="herb">Herbivore</div>
+				</div>
+			</div>
+		</div>
+		<div class="field">
+			<div class="two fields">
+				<div class="field">
+					<div class="ui checkbox">
+				      <input name="rsvp" type="checkbox">
+				      <label>Add RSVP?</label>
+				    </div>
+				</div>
+				<div class="field">
+					<input type="submit" value="Add Guest" class="ui small submit button"/>
+				</div>
+			</div>
+		</div>
+	</form>
+	<div class="ui inverted dimmer">
+	    <div class="ui text loader">Adding</div>
+	</div>
+</template>
