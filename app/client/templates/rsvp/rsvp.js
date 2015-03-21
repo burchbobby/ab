@@ -20,7 +20,7 @@ Template.Rsvp.helpers({
    */
 
    rsvpTemplate: function() {
-    return Session.get('rsvpStatus').template;
+    return Session.get('rsvpTemplate');
    }
 
 });
@@ -29,16 +29,15 @@ Template.Rsvp.helpers({
 /* Rsvp: Lifecycle Hooks */
 /*****************************************************************************/
 Template.Rsvp.created = function () {
-  Session.set('rsvpStatus', undefined);
+  Session.set('rsvpTemplate', undefined);
 };
 
 Template.Rsvp.rendered = function () {
   /* If no Session is defined, let's set it to the beginning form. */
-  if (typeof Session.get('rsvpStatus') === 'undefined') {
-    Session.set('rsvpStatus', {
-      error: false,
-      template: 'RsvpForm'
-    });
+  if (typeof Session.get('rsvpTemplate') === 'undefined') {
+  	Session.set('rsvpError', false);
+  	Session.set('rsvpErrorType', null);
+  	Session.set('rsvpTemplate', 'RsvpForm');
   }
 };
 

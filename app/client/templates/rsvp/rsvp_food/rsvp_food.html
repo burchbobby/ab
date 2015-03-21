@@ -1,3 +1,28 @@
 <template name="RsvpFood">
-  <h2></h2>
+  <form id="guest-rsvp" class="ui small form">
+	<div class="two fields">
+		<div class="field">
+			<label for="diet">
+				Diet Selection
+				<div class="ui selection dropdown">
+					<input name="diet" type="hidden">
+					<div class="default text">Herbivore</div>
+					<i class="dropdown icon"></i>
+					<div class="menu">
+						<div class="item" data-value="omni">Omnivore</div>
+						<div class="item" data-value="herb">Herbivore</div>
+					</div>
+				</div>
+			</label>
+		</div>
+		<div class="field">
+			<label for="diet_other">
+				Other Notes or Restrictions
+				<input type="text" name="diet_other" class="u-full-width"/>
+			</label>
+		</div>
+	</div>
+	
+	<input type="submit" class="ui small submit button" value="Make Selection">
+  </form>
 </template>

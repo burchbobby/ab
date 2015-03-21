@@ -1,4 +1,12 @@
 <template name="RsvpError">
-  You rendered the error template.
-  You can <a class="rsvp-retry" href="#">go back</a> or <a class="rsvp-contact" href="#">contact us</a>.
+	<h2>{{errorType}}</h2>
+	{{#if guestNotFound}}
+		<p>Oh no! It looks like we can't find you in our guest list. Did you forget how to spell your name? Or have we committed a grave mistake?</p>
+		<p>You can <a class="rsvp-retry" href="#">try again</a> or <a class="rsvp-contact" href="#">contact us</a>.</p>
+	{{/if}}
+
+	{{#if foodNotFound}}
+		<p>The good news is that you've already RSVP'd. The bad news is, you forgot to select your menu preference!</p>
+		<a href="#" class="ui small submit button rsvp-food">Take me to the menu selection!</a>
+	{{/if}}
 </template>

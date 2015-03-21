@@ -11,17 +11,21 @@ Template.RsvpError.events({
 
    'click .rsvp-retry': function(e) {
 
-    Session.set('rsvpStatus', {
-      error: false,
-      type: null,
-      template: 'RsvpForm'
-    });
+   	Session.set('rsvpError', false);
+   	Session.set('rsvpErrorType', null);
+   	Session.set('rsvpTemplate', 'RsvpForm');
 
     return false;
    },
 
    'click .rsvp-contact': function(e) {
     
+   },
+
+   'click .rsvp-food': function(e) {
+   	Session.set('rsvpError', false);
+   	Session.get('rsvpErrorType', null);
+   	Session.set('rsvpTemplate', 'RsvpFood');
    }
 });
 
@@ -32,8 +36,11 @@ Template.RsvpError.helpers({
    *    return Items.find();
    *  }
    */
-   errorType: function() {
-    return Session.get('rsvpStatus').type;
+   foodNotFound: function() {
+   	return Session.get('rsvpErrorType') === "FoodNotFound";
+   },
+   guestNotFound: function() {
+   	return Session.get('rsvpErrorType') === "GuestNotFound";
    }
 });
 

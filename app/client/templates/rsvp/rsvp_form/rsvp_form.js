@@ -21,13 +21,9 @@ Template.RsvpForm.events({
       if (count === 0) {
          console.log('Guest not found.');
 
-         Session.set('rsvpStatus', 
-            {
-               error : true,
-               type: 'GuestNotFound',
-               template : 'RsvpError'
-            }
-         );
+         Session.set('rsvpError', true);
+         Session.set('rsvpErrorType', 'GuestNotFound');
+         Session.set('rsvpTemplate', 'RsvpError');
          
          // Guest does not exist in the DB.
          // We should return a friendly error.
@@ -41,9 +37,14 @@ Template.RsvpForm.events({
          console.log('Guest: ', guest);
 
          if (!hasRsvp) {
+            // This is a new guest. This should be handled separately.
             console.log('Guest does not have RSVP');
              // If guest has not RSVP'd...
             Meteor.call('setRsvp', guest, true); // Set the RSVP to true.
+
+            Session.set('rsvpError', false);
+            Session.set('rsvpErrorType', null);
+            Session.set('rsvpTemplate', 'RsvpFood');
 
          } else {
             console.log('Guest has RSVP');
@@ -58,22 +59,17 @@ Template.RsvpForm.events({
                // If guest has selected a diet...
                // They've done everything we need.
                // We should bring them to the success screen.
-               Session.set('rsvpStatus', 
-                  {
-                     error : false,
-                     type: null,
-                     template : 'RsvpCompleted'
-                  }
-               );
+
+               Session.set('rsvpError', false);
+               Session.set('rsvpErrorType', null);
+               Session.set('rsvpTemplate', 'RsvpCompleted');
+
             } else {
                console.log('Guest has not selected food choice.');
-               Session.set('rsvpStatus', 
-                  {
-                     error : true,
-                     type: 'FoodNotFound',
-                     template : 'RsvpError'
-                  }
-               );
+               
+               Session.set('rsvpError', true);
+               Session.set('rsvpErrorType', 'FoodNotFound');
+               Session.set('rsvpTemplate', 'RsvpError');
                // If the guest has not selected a diet...
                // We should show them the diet selection screen.
             }
